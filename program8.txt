@@ -1,0 +1,79 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class employee {
+private:
+	string name;
+	int ID;
+public:
+	employee() {
+		ID = 0;
+	}
+	employee(string name, int id)
+	{
+		this->name = name;
+		this->ID = id;
+	}
+	
+	void setName(string name) {
+		this->name = name;
+	}
+	void setId(int id) {
+		this->ID = id;
+	}
+	
+	int getId() {
+		return ID;
+	}
+	string getName() {
+		return name;
+	}
+	
+	void display()
+	{
+		cout << "Name : " << name << endl;
+		cout << "ID: " << ID << endl;
+	}
+};
+
+class university {
+private:
+	int id;
+	employee* emp;
+public:
+	university()
+	{
+		id = 0;
+		emp = nullptr;
+	}
+	university(int id, employee* emp)
+	{
+		this->id = id;
+		this->emp = emp;
+	}
+	void setId(int id) {
+		this->id = id;
+	}
+	void setEmployee(employee* emp)
+	{
+		this->emp = emp;
+	}
+	void display()
+	{
+		cout << "id: " << id << endl;
+		this->emp->display();
+	}
+};
+
+
+int main() {
+	university ucp;
+	ucp.setId(1234);
+	employee ranaWaqasAli;
+	ranaWaqasAli.setId(123456);
+	ranaWaqasAli.setName("ranaWaqasAli");
+	ucp.setEmployee(&ranaWaqasAli);
+	ucp.display();
+	return 0;
+}
